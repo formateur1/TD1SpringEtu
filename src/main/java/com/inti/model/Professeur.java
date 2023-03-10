@@ -11,77 +11,59 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-@Entity @Table
-public class Etudiant {
+@Entity
+@Table
+public class Professeur {
 	
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String nom;
 	private String prenom;
-	private String tel;
-	private String mail;
+	private double salaire;
 	
 	@ManyToMany
 	@JoinTable(name = "Professeur_Etudiant",
-					joinColumns = @JoinColumn(name = "idEtu"),
-					inverseJoinColumns = @JoinColumn(name = "idProf"))
-	List<Professeur> listeProfesseur;
+					joinColumns = @JoinColumn(name = "idProf"),
+					inverseJoinColumns = @JoinColumn(name = "idEtu"))
+	List<Etudiant> listeEtudiant;
 	
-	public Etudiant() {
+	public Professeur() {
 		super();
 	}
-
-	public Etudiant(String nom, String prenom, String tel, String mail) {
+	public Professeur(String nom, String prenom, double salaire) {
 		super();
 		this.nom = nom;
 		this.prenom = prenom;
-		this.tel = tel;
-		this.mail = mail;
+		this.salaire = salaire;
 	}
-
 	public int getId() {
 		return id;
 	}
-
 	public void setId(int id) {
 		this.id = id;
 	}
-
 	public String getNom() {
 		return nom;
 	}
-
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
-
 	public String getPrenom() {
 		return prenom;
 	}
-
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
 	}
-
-	public String getTel() {
-		return tel;
+	public double getSalaire() {
+		return salaire;
 	}
-
-	public void setTel(String tel) {
-		this.tel = tel;
+	public void setSalaire(double salaire) {
+		this.salaire = salaire;
 	}
-
-	public String getMail() {
-		return mail;
-	}
-
-	public void setMail(String mail) {
-		this.mail = mail;
-	}
-
 	@Override
 	public String toString() {
-		return "Etudiant [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", tel=" + tel + ", mail=" + mail + "]";
+		return "Professeur [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", salaire=" + salaire + "]";
 	}
 	
 	

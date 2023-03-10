@@ -11,7 +11,7 @@ import com.inti.util.HibernateUtil;
 @Service
 public class EtudiantServiceImpl implements EtudiantService {
 	
-	private static Session session = HibernateUtil.getSessionFactory().openSession();
+	public static Session session = HibernateUtil.getSessionFactory().openSession();
 
 	@Override
 	public List<Etudiant> getEtudiants() {
